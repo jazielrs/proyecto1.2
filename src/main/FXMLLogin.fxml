@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.FXMLLoginController">
+   <center>
+      <AnchorPane fx:id="ap" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnLogin" layoutX="211.0" layoutY="282.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="25.0" prefWidth="172.0" text="Login" visible="false" />
+            <Text fx:id="profileTxt" layoutX="109.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile (user):" wrappingWidth="120.783203125">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <CheckBox fx:id="checkButtonManager" layoutX="248.0" layoutY="65.0" mnemonicParsing="false" onAction="#managerSelection" prefHeight="21.0" prefWidth="104.0" text="Manager">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="checkButtonStudent" layoutX="352.0" layoutY="65.0" mnemonicParsing="false" onAction="#studentSelection" prefHeight="21.0" prefWidth="91.0" text="Student">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </CheckBox>
+            <Text fx:id="txtUsername" layoutX="151.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username :" visible="false" wrappingWidth="89.783203125">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <TextField fx:id="txtFieldUsername" layoutX="240.0" layoutY="132.0" prefHeight="25.0" prefWidth="182.0" visible="false" />
+            <Text fx:id="txtPassword" layoutX="151.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password : " visible="false">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <TextField fx:id="txtFieldPassword" layoutX="239.0" layoutY="209.0" prefHeight="25.0" prefWidth="182.0" visible="false" />
+            <Text fx:id="txtStudentID" layoutX="144.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID :" visible="false" wrappingWidth="92.326171875">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <TextField fx:id="txtFIeldStudentID" layoutX="245.0" layoutY="141.0" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Text fx:id="txtStudentPassword" layoutX="143.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password : " visible="false" wrappingWidth="94.76416015625">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <TextField fx:id="txtFieldStudentPassword" layoutX="245.0" layoutY="188.0" prefHeight="29.0" prefWidth="172.0" visible="false" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

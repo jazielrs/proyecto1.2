@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.FXMLModifyCareerController">
+   <center>
+      <AnchorPane fx:id="ap" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="48.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select the career to modify" wrappingWidth="335.13671875">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font>
+            </Text>
+            <ComboBox fx:id="combo" layoutX="397.0" layoutY="64.0" onAction="#comboSelection" prefWidth="150.0" />
+            <Text fx:id="txtMessage" layoutX="48.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="335.13671875">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font>
+            </Text>
+            <TextField fx:id="txtFieldModifyCareer" layoutX="207.0" layoutY="236.0" prefHeight="25.0" prefWidth="187.0" visible="false" />
+            <Button fx:id="btnModify" layoutX="195.0" layoutY="317.0" mnemonicParsing="false" onAction="#btnModify" prefHeight="25.0" prefWidth="78.0" text="Modify" visible="false">
+               <font>
+                  <Font name="Times New Roman" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnClean" layoutX="330.0" layoutY="317.0" mnemonicParsing="false" onAction="#btnClean" prefHeight="25.0" prefWidth="78.0" text="Clean" visible="false">
+               <font>
+                  <Font name="Times New Roman" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

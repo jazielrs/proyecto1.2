@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="366.0" prefWidth="523.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.FXMLShowCareerController">
+   <center>
+      <AnchorPane fx:id="ap" prefHeight="341.0" prefWidth="523.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="careerTable" layoutX="10.0" layoutY="43.0" prefHeight="303.0" prefWidth="502.0">
+              <columns>
+                <TableColumn fx:id="ID" prefWidth="264.0" text="ID" />
+                <TableColumn fx:id="Description" prefWidth="237.0" text="Description" />
+              </columns>
+            </TableView>
+            <Text layoutX="199.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Display Career" wrappingWidth="124.13671875">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
