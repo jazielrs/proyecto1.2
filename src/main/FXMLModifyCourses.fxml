@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.FXMLModifyCoursesController">
+   <center>
+      <AnchorPane fx:id="ap" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text fx:id="txtCourseID" layoutX="45.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course ID" visible="false" wrappingWidth="107.13671875">
+               <font>
+                  <Font name="Times New Roman" size="21.0" />
+               </font>
+            </Text>
+            <Text layoutX="76.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose the course ID" wrappingWidth="253.13671875">
+               <font>
+                  <Font name="Times New Roman" size="21.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtCourseName" layoutX="45.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course name" visible="false" wrappingWidth="119.13671875">
+               <font>
+                  <Font name="Times New Roman" size="21.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtCredits" layoutX="45.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits" visible="false" wrappingWidth="119.13671875">
+               <font>
+                  <Font name="Times New Roman" size="21.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtCareerID" layoutX="45.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Career ID" visible="false" wrappingWidth="119.13671875">
+               <font>
+                  <Font name="Times New Roman" size="21.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtCareer" layoutX="45.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Career" visible="false" wrappingWidth="119.13671875">
+               <font>
+                  <Font name="Times New Roman" size="21.0" />
+               </font>
+            </Text>
+            <TextField fx:id="txtFieldCourseID" layoutX="214.0" layoutY="94.0" visible="false" />
+            <TextField fx:id="txtFieldCourseName" layoutX="215.0" layoutY="145.0" visible="false" />
+            <TextField fx:id="txtFieldCredits" layoutX="215.0" layoutY="199.0" visible="false" />
+            <TextField fx:id="txtFieldCareerID" layoutX="214.0" layoutY="306.0" visible="false" />
+            <ComboBox fx:id="comboCareer" layoutX="215.0" layoutY="253.0" prefWidth="150.0" visible="false" />
+            <Button fx:id="btnModifyCourse" layoutX="379.0" layoutY="327.0" mnemonicParsing="false" onAction="#btnModifyCourse" prefHeight="31.0" prefWidth="97.0" text="Modify Course" visible="false" />
+            <Button fx:id="btnClean" layoutX="499.0" layoutY="327.0" mnemonicParsing="false" onAction="#btnClean" prefHeight="31.0" prefWidth="66.0" text="Clean" visible="false" />
+            <ComboBox fx:id="comboChooseID" layoutX="353.0" layoutY="37.0" onAction="#comboChooseID" prefWidth="150.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

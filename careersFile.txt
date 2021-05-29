@@ -1,3 +1,3 @@
-1,Informatica
-2,Diseño
-3,Arte
+1,Turismo
+2,Medicina
+3,Informática

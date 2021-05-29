@@ -5,9 +5,12 @@
  */
 package main;
 
+import domain.CircularDoublyLinkedList;
 import domain.DoublyLinkedList;
 import domain.FileManage;
+import domain.ListException;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,7 +35,8 @@ import javafx.stage.Stage;
  */
 public class FXMLMENUController implements Initializable {
 
-    DoublyLinkedList careerlist;
+    DoublyLinkedList careerList;
+    CircularDoublyLinkedList coursesList;
     FileManage fileManage = new FileManage();
 
     private Button btnExit;
@@ -82,11 +86,15 @@ public class FXMLMENUController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
             // TODO
-            this.careerlist = util.Utility.getDoublyList();
+            this.careerList = util.Utility.getDoublyList();
+            this.coursesList = util.Utility.getCircularDoublyList();
             if (fileManage.existFile("careersFile.txt")) {
-                fileManage.loadList("careersFile.txt", careerlist);//Corregir***
+                fileManage.loadListCareer("careersFile.txt", careerList);//Corregir***
             }
-        } catch (IOException ex) {
+            if (fileManage.existFile("coursesFile.txt")) {
+                fileManage.loadListCourse("coursesFile.txt", coursesList);
+            }
+        } catch (IOException | ListException ex) {
             Logger.getLogger(FXMLMENUController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -150,6 +158,11 @@ public class FXMLMENUController implements Initializable {
     private void addCourse(ActionEvent event) {
         loadPage("FXMLAddCourse");
     }
+    
+    @FXML
+    private void modifyCourse(ActionEvent event) {
+        loadPage("FXMLModifyCourses");
+    }
 
     @FXML
     private void eraseCourse(ActionEvent event) {
@@ -186,9 +199,6 @@ public class FXMLMENUController implements Initializable {
         loadPage("FXMLDeenrollmentReport");
     }
 
-    @FXML
-    private void modifyCourse(ActionEvent event) {
-        loadPage("FXMLModifyCourses");
-    }
+    
 
 }

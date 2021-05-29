@@ -6,16 +6,13 @@
 package main;
 
 import domain.FileManage;
+import domain.Mail;
 import domain.SinglyLinkedList;
 import domain.Student;
-import java.io.IOException;
 import java.net.URL;
-import java.time.Instant;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -35,7 +32,8 @@ import javafx.scene.control.TextField;
 public class FXMLAddStudentController implements Initializable {
 
     FileManage fileManage = new FileManage();
-    SinglyLinkedList list = new SinglyLinkedList();
+    SinglyLinkedList list;
+    Mail mail = new Mail();
     ObservableList listObservableList = FXCollections.observableArrayList();
     @FXML
     private TextField studentAddress;
@@ -64,23 +62,23 @@ public class FXMLAddStudentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         loadData();
+        list = util.Utility.getSinglyList();
     }
 
     @FXML
     private void addButton(ActionEvent event) throws InterruptedException {
-        
+
         Date birthday = Date.from(this.studentAge.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-        
+
         try {
             Student student = new Student(Integer.parseInt(studentIdPerson.getText()), studentIdCarne.getText(),
                     studentFirstName.getText(), studentName.getText(), birthday,
                     studentMovil.getText(), studentEmail.getText(), studentAddress.getText(),
                     studentIdCarrer.getValue());
             list.add(student);
-            System.out.println("list" + list.toString());
-//            mail.run(studentEmail.getText(), "Información de Matricula", "Felicidades "+ studentName.getText() +" "+ studentFirstName.getText()+ ".\nNúmero de cédula: "+studentIdPerson.getText()+"\nUsted ha sido admitido por la Universidad de Costa Rica\n"
-//                    + "En la carrera con la identificación: "+studentIdCarrer.getValue()+"\nTú número de Carnet es: "+studentIdCarne.getText()+"\nAhora Formas Parte de esta Gran comunidad Universitaria\n");
-//            outMessage("Se ha registrado un nuevo estudiante");
+            mail.run(studentEmail.getText(), "Información de Matricula", "Felicidades "+ studentName.getText() +" "+ studentFirstName.getText()+ ".\nNúmero de cédula: "+studentIdPerson.getText()+"\nUsted ha sido admitido por la Universidad de Costa Rica\n"
+                    + "En la carrera con la identificación: "+studentIdCarrer.getValue()+"\nTú número de Carnet es: "+studentIdCarne.getText()+"\nAhora Formas Parte de esta Gran comunidad Universitaria\n");
+            outMessage("Se ha registrado un nuevo estudiante");
         } catch (NumberFormatException err) {
             outMessage("Ha ingresado datos incorrectos (NumberFormatException)");
         }

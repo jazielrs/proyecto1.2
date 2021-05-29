@@ -10,6 +10,7 @@ package domain;
  * @author Cristopher.za
  */
 public class Course {
+    
     private String id, name;
     private int credits, carrerID;
 
@@ -18,6 +19,9 @@ public class Course {
         this.name = name;
         this.credits = credits;
         this.carrerID = carrerID;
+    }
+
+    public Course() {
     }
 
     public String getId() {

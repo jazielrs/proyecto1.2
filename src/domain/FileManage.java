@@ -99,26 +99,20 @@ public class FileManage {
     }
 
     public void modifyCareer(DoublyLinkedList list) throws ListException, IOException {
-        
-        String result = ""; 
+
+        String result = "";
         for (int i = 1; i <= list.size(); i++) {
             Career career = (Career) list.getNode(i).data;
             result += i + "," + career.getDescription() + "\n";//No trabajar con el id sino con e i
         }
-        
-       // File fnew = new File("careersFile.txt");
-      
-//        try (FileWriter f2 = new FileWriter(fnew, false)) {
-//            f2.write(result);
-//        }
 
         BufferedWriter bw = new BufferedWriter(new FileWriter("careersFile.txt"));//sobreescibe
         try {
             String careers[] = result.split("\n");
-            for(int i = 0; i < careers.length;i++){
-            bw.write(careers[i]);
-            bw.newLine();
-            bw.flush();
+            for (int i = 0; i < careers.length; i++) {
+                bw.write(careers[i]);
+                bw.newLine();
+                bw.flush();
             }
             bw.close();
 
@@ -129,7 +123,49 @@ public class FileManage {
         }
     }
 
-    public DoublyLinkedList loadList(String fileDir, DoublyLinkedList list) throws FileNotFoundException, IOException, ListException {
+    public void addCourses(Course course) throws IOException {
+
+        BufferedWriter bw = new BufferedWriter(new FileWriter("coursesFile.txt", true));//no sobreescibe
+        try {
+            bw.write(course.getId() + "," + course.getName() + "," + course.getCredits() + "," + course.getCarrerID());
+            bw.newLine();
+            bw.flush();
+            bw.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void modifyCourses(CircularDoublyLinkedList list) throws ListException, IOException {
+
+        String result = "";
+        for (int i = 1; i <= list.size(); i++) {
+            Course course = (Course) list.getNode(i).data;
+            result += i + "," + course.getId() + "," + course.getName() + "," 
+                    + course.getCredits()+ "," + course.getCarrerID() + "\n";//No trabajar con el id sino con e i
+        }
+
+        BufferedWriter bw = new BufferedWriter(new FileWriter("coursesFile.txt"));//sobreescibe
+        try {
+            String course[] = result.split("\n");
+            for (int i = 0; i < course.length; i++) {
+                bw.write(course[i]);
+                bw.newLine();
+                bw.flush();
+            }
+            bw.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public DoublyLinkedList loadListCareer(String fileDir, DoublyLinkedList list) throws FileNotFoundException, IOException, ListException {
 
         BufferedReader br = new BufferedReader(new FileReader(fileDir));
         String linea = br.readLine();
@@ -138,6 +174,22 @@ public class FileManage {
             while (linea != null) {
                 String careers[] = linea.split(",");//Divide la linea en un array de String
                 list.add(new Career(careers[1]));
+                linea = br.readLine();
+            }
+        }//Fin linea+
+        br.close();
+        return list;
+    }
+
+    public CircularDoublyLinkedList loadListCourse(String fileDir, CircularDoublyLinkedList list) throws FileNotFoundException, IOException, ListException {
+
+        BufferedReader br = new BufferedReader(new FileReader(fileDir));
+        String linea = br.readLine();
+        //DoublyLinkedList aux = new DoublyLinkedList();
+        if (linea != null) {
+            while (linea != null) {
+                String course[] = linea.split(",");//Divide la linea en un array de String
+                list.add(new Course(course[0], course[1], Integer.parseInt(course[2]), Integer.parseInt(course[3])));
                 linea = br.readLine();
             }
         }//Fin linea+
