@@ -21,7 +21,7 @@ public class Career {
         this.description = description;
     }
     
-    public int getId() {
+    public static int getId() {
         return id;
     }
 

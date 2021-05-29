@@ -29,7 +29,6 @@ import javafx.scene.control.Alert;
 public class FXMLAddCareerController implements Initializable {
 
     DoublyLinkedList careerList;
-    int id = 0;
     @FXML
     private TextField txtFieldCareerDescription;
     @FXML
@@ -49,6 +48,7 @@ public class FXMLAddCareerController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         this.careerList = util.Utility.getDoublyList();
+        txtFieldCareerID.setText(String.valueOf(domain.Career.getId()+1));
     }
 
     @FXML
@@ -61,23 +61,32 @@ public class FXMLAddCareerController implements Initializable {
                 Career auxCareer;
                 boolean existCareer = false;
                 for (int i = 1; i <= careerList.size(); i++) {
-                    auxCareer = (Career) careerList.getNode(i).data;//Crea nueva carreray amenta id
-                    if (career.getDescription().equalsIgnoreCase(auxCareer.getDescription())) {
+                    auxCareer = (Career) careerList.getNode(i).data;//Crea nueva carreray aumenta id
+                    if (career.getDescription().equalsIgnoreCase(auxCareer.getDescription())) {//Evita que se agregue carrera con misma descripcion
                         existCareer = true;
                     }
                 }
                 if (!existCareer) {
                     careerList.add(career);
                     fileManage.addCareer(career);
+                    txtFieldCareerDescription.setText("");
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Add Career");
                     alert.setHeaderText("Carreer");
                     alert.setContentText("New career added");
                     alert.showAndWait();
+                    txtFieldCareerID.setText(String.valueOf(domain.Career.getId()+1));
                 }
             }else {//Lista de carreras vacia
                 careerList.add(career);
                 fileManage.addCareer(career);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Add Career");
+                alert.setHeaderText("Carreer");
+                alert.setContentText("New career added");
+                alert.showAndWait();
+                txtFieldCareerDescription.setText("");
+                txtFieldCareerID.setText(String.valueOf(domain.Career.getId()+1));
             }
         }else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

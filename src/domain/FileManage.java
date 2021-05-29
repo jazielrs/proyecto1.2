@@ -103,38 +103,45 @@ public class FileManage {
         String result = ""; 
         for (int i = 1; i <= list.size(); i++) {
             Career career = (Career) list.getNode(i).data;
-             result += career.getId() + "," + career.getDescription() + "\n";
+            result += i + "," + career.getDescription() + "\n";//No trabajar con el id sino con e i
         }
         
-        File fnew = new File("careersFile.txt");
-        System.out.println("result" + result);
+       // File fnew = new File("careersFile.txt");
       
-        try (FileWriter f2 = new FileWriter(fnew, false)) {
-            f2.write(result);
+//        try (FileWriter f2 = new FileWriter(fnew, false)) {
+//            f2.write(result);
+//        }
+
+        BufferedWriter bw = new BufferedWriter(new FileWriter("careersFile.txt"));//sobreescibe
+        try {
+            String careers[] = result.split("\n");
+            for(int i = 0; i < careers.length;i++){
+            bw.write(careers[i]);
+            bw.newLine();
+            bw.flush();
+            }
+            bw.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
 
-    public DoublyLinkedList loadList(String fileDir, DoublyLinkedList list) throws FileNotFoundException, IOException {
+    public DoublyLinkedList loadList(String fileDir, DoublyLinkedList list) throws FileNotFoundException, IOException, ListException {
 
         BufferedReader br = new BufferedReader(new FileReader(fileDir));
-
         String linea = br.readLine();
-        
+        //DoublyLinkedList aux = new DoublyLinkedList();
         if (linea != null) {
             while (linea != null) {
                 String careers[] = linea.split(",");//Divide la linea en un array de String
-                Career career = new Career();
-                career.setId(Integer.parseInt(careers[0]));
-                career.setDescription(careers[1]);
-                System.out.println("careerLoad "+career.toString());
-                list.add(career);
-                System.out.println("listLoad "+list.toString());
+                list.add(new Career(careers[1]));
                 linea = br.readLine();
             }
-            
         }//Fin linea+
         br.close();
-
         return list;
     }
 

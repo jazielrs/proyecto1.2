@@ -59,7 +59,7 @@ public class FXMLModifyCareerController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
             // TODO
-            this.careerList = util.Utility.getDoublyList();//Corregir
+            this.careerList = util.Utility.getDoublyList();//Carga la lista en la pagina
             ObservableList<String> list = FXCollections.observableArrayList(convertListToArray());
             combo.setItems(list);       
         } catch (ListException ex) {
@@ -94,6 +94,8 @@ public class FXMLModifyCareerController implements Initializable {
             }
         }
         fileManage.modifyCareer(careerList);
+        ObservableList<String> list = FXCollections.observableArrayList(convertListToArray());
+        combo.setItems(list);//Actualiza el combo  
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("ModifyCareer");
         alert.setHeaderText("Success");
